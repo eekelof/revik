@@ -1,0 +1,21 @@
+{
+    "name": "revik",
+    "version": "0.0.1",
+    "description": "Reactive JS library",
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/eekelof/revik.git"
+    },
+    "keywords": [
+        "revik"
+    ],
+    "author": "eekelof",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/eekelof/revik/issues"
+    },
+    "homepage": "https://github.com/eekelof/revik#readme"
+}
