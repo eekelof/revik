@@ -4,7 +4,7 @@ function render(type, props, ...children) {
     let e = svgs.has(type) ? document.createElementNS('http://www.w3.org/2000/svg', type) : document.createElement(type)
     for (let [k, v] of Object.entries((props ?? {}))) {
         if (v._rves)
-            v = v.value;
+            v = v.value
         // TODO: check recursive nested
         k.startsWith('on') && typeof v === 'function' ? e.addEventListener(k.toLowerCase().substring(2), v)
             : k == 'style' && typeof v === 'object' ? Object.assign(e.style, v)
@@ -12,22 +12,22 @@ function render(type, props, ...children) {
     }
     e.append(...children.flat(Infinity).map(c => {
         if (c._rves)
-            c = c.value;
+            c = c.value
         return c ?? []
     }))
     return e
 }
 export default function jsx(type, props, ...children) {
-    const e = render(type, props, children);
-    const rvars = children.flat(Infinity).filter(c => c._rves);
+    const e = render(type, props, children)
+    const rvars = children.flat(Infinity).filter(c => c._rves)
     // TODO: also monitor props, recursive nested
     if (rvars.length > 0) {
-        const rve = { e, render: () => render(type, props, children) };
+        const rve = { e, render: () => render(type, props, children) }
         for (const rvar of rvars) {
-            rvar._rves.add(rve);
+            rvar._rves.add(rve)
         }
     }
-    return e;
+    return e
 }
 
 export function rvar(value) {
@@ -35,7 +35,7 @@ export function rvar(value) {
         value,
         _rves: new Set(),
         set: function (value) {
-            this.value = value;
+            this.value = value
             for (const rve of this._rves) {
                 const n = rve.render()
                 rve.e.replaceWith(n)
