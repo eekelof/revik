@@ -12,7 +12,7 @@ declare module 'revik/jsx-runtime' {
     }
     export interface RVar<T> {
         value: T;
-        set: (newValue: T) => void;
+        set: (value: T) => void;
         _rves: Set<RVarElement>;
     }
     export function rvar<T>(value: T): RVar<T>;

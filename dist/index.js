@@ -1,4 +1,5 @@
 const svgs = new Set(['svg', 'circle', 'ellipse', 'line', 'path', 'polygon', 'polyline', 'rect', 'g', 'defs', 'linearGradient', 'radialGradient', 'stop', 'use', 'symbol', 'text', 'tspan', 'tref', 'textPath', 'altGlyph', 'altGlyphDef', 'altGlyphItem', 'glyph', 'glyphRef', 'marker', 'metadata', 'missing-glyph', 'pattern', 'switch', 'foreignObject', 'desc', 'title'])
+
 function render(type, props, ...children) {
     if (typeof type === 'function') return type(props, children)
     let e = svgs.has(type) ? document.createElementNS('http://www.w3.org/2000/svg', type) : document.createElement(type)
@@ -17,6 +18,7 @@ function render(type, props, ...children) {
     }))
     return e
 }
+
 export default function jsx(type, props, ...children) {
     const e = render(type, props, children)
     const rvars = children.flat(Infinity).filter(c => c._rves)
