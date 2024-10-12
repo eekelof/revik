@@ -5,7 +5,9 @@ declare module 'revik/jsx-runtime' {
         }
     }
     export default function jsx(type: string, props: { [key: string]: any }, ...children: any[]): HTMLElement;
+}
 
+declare module 'revik' {
     interface RVarElement {
         e: Element;
         render: () => any;
